@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [ProgressService]
 })
 export class AppComponent implements OnInit {
   progressData: any;
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   buttons: any;
   loadData = false;
   limit = 0;
-  selectedBar: any;
+  selectedBar: 0;
 
   constructor(private proressService: ProgressService) {
   }
