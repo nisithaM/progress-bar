@@ -1,0 +1,26 @@
+<h1 class="demo-header">Progress Bar Demo</h1>
+<div class="jumbotron text-center progress-section">
+  <div *ngIf="loadData">
+    <div *ngFor="let bar of bars; let i = index;">
+      <div class="progress custom-progressbar">
+        <div class="progress-bar" [ngClass]="{'progress-bar-info': !(bar === 0 || bar === limit)  , 'progress-bar-danger': (bar > limit)  }"
+          role="progressbar" aria-valuenow="bar" aria-valuemin="0" aria-valuemax="limit" [style.width]="(bar/limit)*100 + '%'" title={{bar}}>
+          {{((bar/limit)*100).toFixed(0)}}%
+        </div>
+      </div>
+      <p></p>
+    </div>
+    <hr>
+    <div class="button-section">
+      <select class="bar-selector" id="power" [(ngModel)]="selectedBar" required>
+        <option *ngFor="let bar of bars; let selectedBar = index" [value]="selectedBar">#progress {{selectedBar + 1}}</option>
+      </select>
+      <div *ngFor="let buttonValue of buttons" class="button-wrapper">
+        <span class="button-class" (click)="changeBarValue(selectedBar,buttonValue)">
+          <span *ngIf="buttonValue > 0">+</span>
+          <span>{{buttonValue}}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
